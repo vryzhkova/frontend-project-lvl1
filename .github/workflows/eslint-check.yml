@@ -11,4 +11,4 @@ jobs:
 
     steps:
       - name: Eslint checking
-        run: make lint
+        run: npx eslint .
