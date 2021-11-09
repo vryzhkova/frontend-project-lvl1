@@ -9,4 +9,4 @@
 
 ### ESlint-cheking
 
-![Eslint-check](https://github.com/vryzhkova/frontend-project-lvl1/actions/workflows/eslint-check.yml)
+![Eslint-check](https://github.com/vryzhkova/frontend-project-lvl1/actions/workflows/eslint-check.yml//badge.svg)
