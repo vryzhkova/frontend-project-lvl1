@@ -8,28 +8,49 @@ function calculateValue() {
   console.log(`Hello, ${name}! `);
   console.log('What is the result of the expression?');
   // Получаем рандомное целое положительное число до 20
-  const getRandomNumber = () => Math.floor(Math.random() * 20);
+  const getRandomNumber = () => Math.floor(Math.random() * 10);
 
   // Получаем рандомный оператор
   const arrayOfOperators = ['+', '-', '*'];
   const randOperator = Math.floor(Math.random() * arrayOfOperators.length);
   const randOperatorValue = arrayOfOperators[randOperator];
 
+  // Получаем рандомный оператор  СПОСОБ 2
+  function getOperator(num1, num2, operators) {
+    let result = '';
+    switch (operators) {
+      case '+':
+        result = num1 + num2;
+        break;
+      case '-':
+        result = num1 - num2;
+        break;
+      case '*':
+        result = num1 * num2;
+        break;
+      default:
+        break;
+    }
+    return result;
+  }
+
   // Цикл - 3 игры
   for (let i = 1; i <= 3; i += 1) {
     const randomNumberFirst = getRandomNumber();
     const randomNumberTwo = getRandomNumber();
+    getOperator(randomNumberFirst, randomNumberTwo, randOperatorValue);
 
     console.log(`Question: ${randomNumberFirst} ${randOperatorValue} ${randomNumberTwo}`);
-    const resultCalculateValue = eval(`${randomNumberFirst}${randOperatorValue}${randomNumberTwo}`);
     const userAnswer = readlineSync.question('You answer: ');
+    const resultAll = String(getOperator(randomNumberFirst, randomNumberTwo, randOperatorValue));
 
-    if (userAnswer === resultCalculateValue) {
+    if (userAnswer === resultAll) {
       console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${resultCalculateValue}'. Let's try again, ${name}!`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${resultAll}'. Let's try again, ${name}!`);
       return;
     }
+    console.log(`Congratulations, ${name}!`);
   }
 }
 
