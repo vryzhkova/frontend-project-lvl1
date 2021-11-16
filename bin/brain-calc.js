@@ -1,21 +1,20 @@
 #!/usr/bin/env node
 
-import readlineSync from 'readline-sync';
+import runGame from '../src/index.js';
+import getRandomNumber from '../src/getRandomNumber.js';
 
-function calculateValue() {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${name}! `);
-  console.log('What is the result of the expression?');
-  // Получаем рандомное целое положительное число до 20
-  const getRandomNumber = () => Math.floor(Math.random() * 10);
+const description = 'What is the result of the expression?';
 
+function getBrainCalcGameData() {
   // Получаем рандомный оператор
   const arrayOfOperators = ['+', '-', '*'];
   const randOperator = Math.floor(Math.random() * arrayOfOperators.length);
   const randOperatorValue = arrayOfOperators[randOperator];
 
-  // Получаем рандомный оператор
+  const randomNumberFirst = getRandomNumber();
+  const randomNumberTwo = getRandomNumber();
+
+  // Получаем рандомное выражение
   function getOperator(num1, num2, operators) {
     let result = '';
     switch (operators) {
@@ -34,24 +33,10 @@ function calculateValue() {
     return result;
   }
 
-  // Цикл - 3 игры
-  for (let i = 1; i <= 3; i += 1) {
-    const randomNumberFirst = getRandomNumber();
-    const randomNumberTwo = getRandomNumber();
-    getOperator(randomNumberFirst, randomNumberTwo, randOperatorValue);
+  const question = `${randomNumberFirst} ${randOperatorValue} ${randomNumberTwo}`;
+  const correctAnswer = String(getOperator(randomNumberFirst, randomNumberTwo, randOperatorValue));
 
-    console.log(`Question: ${randomNumberFirst} ${randOperatorValue} ${randomNumberTwo}`);
-    const userAnswer = readlineSync.question('You answer: ');
-    const resultAll = String(getOperator(randomNumberFirst, randomNumberTwo, randOperatorValue));
-
-    if (userAnswer === resultAll) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${resultAll}'. Let's try again, ${name}!`);
-      return;
-    }
-  }
-  console.log(`Congratulations, ${name}!`);
+  return { question, correctAnswer };
 }
 
-calculateValue();
+runGame(description, getBrainCalcGameData);
