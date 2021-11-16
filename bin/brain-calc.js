@@ -15,7 +15,7 @@ function calculateValue() {
   const randOperator = Math.floor(Math.random() * arrayOfOperators.length);
   const randOperatorValue = arrayOfOperators[randOperator];
 
-  // Получаем рандомный оператор  СПОСОБ 2
+  // Получаем рандомный оператор
   function getOperator(num1, num2, operators) {
     let result = '';
     switch (operators) {
@@ -50,8 +50,8 @@ function calculateValue() {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${resultAll}'. Let's try again, ${name}!`);
       return;
     }
-    console.log(`Congratulations, ${name}!`);
   }
+  console.log(`Congratulations, ${name}!`);
 }
 
 calculateValue();

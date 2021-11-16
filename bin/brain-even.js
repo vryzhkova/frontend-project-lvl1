@@ -1,31 +1,16 @@
 #!/usr/bin/env node
 
-import readlineSync from 'readline-sync';
+// import readlineSync from 'readline-sync';
+import runGame from '../src/index.js';
+import getRandomNumber from '../src/getRandomNumber.js';
 
-function evenOrOdd() {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${name}! `);
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  // Получаем рандомное целое положительное число до 100
-  const getRandomNumber = () => Math.floor(Math.random() * 100);
-  // Цикл - 3 игры
-  for (let i = 1; i <= 3; i += 1) {
-    const randomNumber = getRandomNumber();
-    console.log(`Question: ${randomNumber}`);
-    const userAnswer = readlineSync.question('You answer: ');
+function getBrainEvenGameData() {
+  const question = getRandomNumber();
+  const correctAnswer = question % 2 === 0 ? 'yes' : 'no';
 
-    const correctAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
-    if (userAnswer === correctAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. Let's try again, ${name}!`);
-      return;
-    }
-    // Конец цикла
-    console.log(`Congratulations, ${name}!`);
-  }
+  return { question, correctAnswer };
 }
 
-evenOrOdd();
+runGame(description, getBrainEvenGameData);
