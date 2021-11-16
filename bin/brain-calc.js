@@ -3,38 +3,38 @@
 import runGame from '../src/index.js';
 import getRandomNumber from '../src/getRandomNumber.js';
 
+const OPERATORS = ['+', '-', '*'];
+
+function getOperationResult(operator, leftOperand, rightOperand) {
+  let result = null;
+  switch (operator) {
+    case '+':
+      result = leftOperand + rightOperand;
+      break;
+    case '-':
+      result = leftOperand - rightOperand;
+      break;
+    case '*':
+      result = leftOperand * rightOperand;
+      break;
+    default:
+      break;
+  }
+  return String(result);
+}
+
 const description = 'What is the result of the expression?';
 
 function getBrainCalcGameData() {
   // Получаем рандомный оператор
-  const arrayOfOperators = ['+', '-', '*'];
-  const randOperator = Math.floor(Math.random() * arrayOfOperators.length);
-  const randOperatorValue = arrayOfOperators[randOperator];
+  const randomIndex = Math.floor(Math.random() * OPERATORS.length);
+  const operator = OPERATORS[randomIndex];
 
-  const randomNumberFirst = getRandomNumber();
-  const randomNumberTwo = getRandomNumber();
+  const leftOperand = getRandomNumber();
+  const rightOperand = getRandomNumber();
 
-  // Получаем рандомное выражение
-  function getOperator(num1, num2, operators) {
-    let result = '';
-    switch (operators) {
-      case '+':
-        result = num1 + num2;
-        break;
-      case '-':
-        result = num1 - num2;
-        break;
-      case '*':
-        result = num1 * num2;
-        break;
-      default:
-        break;
-    }
-    return result;
-  }
-
-  const question = `${randomNumberFirst} ${randOperatorValue} ${randomNumberTwo}`;
-  const correctAnswer = String(getOperator(randomNumberFirst, randomNumberTwo, randOperatorValue));
+  const question = `${leftOperand} ${operator} ${rightOperand}`;
+  const correctAnswer = getOperationResult(operator, leftOperand, rightOperand);
 
   return { question, correctAnswer };
 }
