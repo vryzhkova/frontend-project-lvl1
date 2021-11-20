@@ -21,7 +21,7 @@ function getBrainGcdGameData() {
   const secondRandomNumber = getRandomNumber();
 
   const question = `${firstRandomNumber} ${secondRandomNumber}`;
-  const correctAnswer = findGreatestCommonDivisor(firstRandomNumber, secondRandomNumber);
+  const correctAnswer = String(findGreatestCommonDivisor(firstRandomNumber, secondRandomNumber));
 
   return { question, correctAnswer };
 }
