@@ -13,13 +13,11 @@ const MAXCOUNT = 10;
 function getArithmeticProgression() {
   const randomNumber = Math.floor(Math.random() * 100);
   const randomStep = Math.floor(Math.random() * 5);
-
   const result = [];
 
   for (let i = randomNumber; result.length < MAXCOUNT; i += randomStep) {
     result.push(i);
   }
-
   return result;
 }
 
@@ -27,13 +25,19 @@ function getArithmeticProgression() {
 function createHiddenElement(arr) {
   const num = Math.floor(Math.random() * 10);
   const i = num;
-  arr[i] = '..';
-  console.log(arr);
+  const answer = arr[i];
+  answer = '..';
+  return arr.join(' ');
+}
+
+// Ищем спрятанное число
+function getHiddenElement() {
+  return createHiddenElement(arr)
 }
 
 function getBrainProgressionGameData() {
   const question = createHiddenElement(getArithmeticProgression());
-  const correctAnswer = NaN;
+  const correctAnswer = ;
 
   return { question, correctAnswer };
 }
