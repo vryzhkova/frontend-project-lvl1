@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import runGame from '../src/index.js';
 // import getRandomNumber from '../src/getRandomNumber.js';
 
@@ -7,6 +9,7 @@ const description = 'What number is missing in the progression?';
 // const MINLENGTH = 5;
 const MAXCOUNT = 10;
 
+// Создаем рандомный массив их 10 последовательных чисел
 function getArithmeticProgression() {
   const randomNumber = Math.floor(Math.random() * 100);
   const randomStep = Math.floor(Math.random() * 5);
@@ -20,12 +23,16 @@ function getArithmeticProgression() {
   return result;
 }
 
+// Заменяем рандомное число в массиве '..'
 function createHiddenElement(arr) {
-
+  const num = Math.floor(Math.random() * 10);
+  const i = num;
+  arr[i] = '..';
+  console.log(arr);
 }
 
 function getBrainProgressionGameData() {
-  const question = getArithmeticProgression();
+  const question = createHiddenElement(getArithmeticProgression());
   const correctAnswer = NaN;
 
   return { question, correctAnswer };
