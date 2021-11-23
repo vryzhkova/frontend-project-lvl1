@@ -5,7 +5,10 @@ import getRandomNumber from '../src/getRandomNumber.js';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-function findGreatestCommonDivisor(a, b) {
+function findGreatestCommonDivisor(firstValue, secondValue) {
+  let a = firstValue;
+  let b = secondValue;
+
   while (a !== b) {
     if (a > b) {
       a -= b;
