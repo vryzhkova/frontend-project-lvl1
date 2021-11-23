@@ -16,21 +16,18 @@ function getArithmeticProgression() {
   for (let i = startNumber; progression.length < PROGRESSION_LENGTH; i += step) {
     progression.push(i);
   }
-  return progression;
-}
-
-// Заменяем рандомное число в массиве '..'
-function createHiddenElement(arr) {
+  // Заменяем рандомное число в массиве  двумя точками '..'
   const num = Math.floor(Math.random() * 10);
   const i = num;
-  const answer = String(arr[i]);
-  arr[i] = '..';
-  const stringArr = arr.join(' ');
+  const answer = String(progression[i]);
+  progression[i] = '..';
+  const stringArr = progression.join(' ');
+
   return { stringArr, answer };
 }
 
 function getBrainProgressionGameData() {
-  const { stringArr, answer } = createHiddenElement(getArithmeticProgression());
+  const { stringArr, answer } = getArithmeticProgression();
 
   return { question: stringArr, correctAnswer: answer };
 }
