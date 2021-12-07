@@ -4,28 +4,21 @@ import getRandomNumber from '../getRandomNumber.js';
 const OPERATORS = ['+', '-', '*'];
 
 function getOperationResult(operator, leftOperand, rightOperand) {
-  let result = null;
   switch (operator) {
     case '+':
-      result = leftOperand + rightOperand;
-      break;
+      return leftOperand + rightOperand;
     case '-':
-      result = leftOperand - rightOperand;
-      break;
+      return leftOperand - rightOperand;
     case '*':
-      result = leftOperand * rightOperand;
-      break;
-    default:
-      break;
+      return leftOperand * rightOperand;
   }
-  return String(result);
 }
 
 const description = 'What is the result of the expression?';
 
-function getBrainCalcGameData() {
-  // Получаем рандомный оператор
-  const randomIndex = Math.floor(Math.random() * OPERATORS.length);
+
+function getQuestionAndAnswer() {
+  const randomIndex = getRandomNumber(OPERATORS.length - 1, 0);
   const operator = OPERATORS[randomIndex];
 
   const leftOperand = getRandomNumber();
@@ -34,7 +27,11 @@ function getBrainCalcGameData() {
   const question = `${leftOperand} ${operator} ${rightOperand}`;
   const correctAnswer = getOperationResult(operator, leftOperand, rightOperand);
 
-  return { question, correctAnswer, description };
+  return { question, correctAnswer: String(correctAnswer) };
+}
+
+function getBrainCalcGameData() {
+  return { description, getQuestionAndAnswer };
 }
 
 export default function runBrainCalcGame() {

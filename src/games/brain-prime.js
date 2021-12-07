@@ -15,11 +15,15 @@ function isPrime(num) {
   return true;
 }
 
-function getBrainPrimeGameData() {
+function getQuestionAndAnswer() {
   const question = getRandomNumber();
   const correctAnswer = isPrime(question) ? 'yes' : 'no';
 
   return { question, correctAnswer, description };
+}
+
+function getBrainPrimeGameData() {
+  return { description,  getQuestionAndAnswer };
 }
 
 export default function runBrainPrimeGame() {

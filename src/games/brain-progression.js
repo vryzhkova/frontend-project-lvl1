@@ -6,7 +6,12 @@ const description = 'What number is missing in the progression?';
 const PROGRESSION_LENGTH = 10;
 
 // Создаем рандомный массив их 10 последовательных чисел
-function getArithmeticProgression() {
+
+// function generateArithmeticProgression(startNumber, progressionLength, progressionStep) {
+//   return []
+// }
+
+function getQuestionAndAnswer() {
   const startNumber = getRandomNumber(100);
   const step = getRandomNumber(5);
   const progression = [];
@@ -15,19 +20,33 @@ function getArithmeticProgression() {
     progression.push(i);
   }
   // Заменяем рандомное число в массиве  двумя точками '..'
-  const num = Math.floor(Math.random() * 10);
+  const num = getRandomNumber(PROGRESSION_LENGTH);
   const i = num;
-  const answer = String(progression[i]);
+  const correctAnswer = String(progression[i]);
   progression[i] = '..';
-  const stringArr = progression.join(' ');
+  const question = progression.join(' ');
 
-  return { stringArr, answer };
+  return { question, correctAnswer };
 }
 
 function getBrainProgressionGameData() {
-  const { stringArr, answer } = getArithmeticProgression();
+  // return { description,  getQuestionAndAnswer: () => {
+  //   const startNumber = getRandomNumber(100);
+  //   const progressionStep = getRandomNumber(5);
+  //   const progressionLength = getRandomNumber(10, 5);
+  //   const arithmeticProgression = generateArithmeticProgression(startNumber, progressionLength, progressionStep);
+  
+  //   const hiddenNumberIndex = getRandomNumber(progressionLength);
 
-  return { question: stringArr, correctAnswer: answer, description };
+  //   const hiddenNumber = arithmeticProgression[hiddenNumberIndex];
+
+  //   arithmeticProgression[hiddenNumberIndex] = '..'
+
+  //   return {
+  //     question: arithmeticProgression.join(' '),
+  //     correctAnswer: hiddenNumber,
+  //   }
+  // } };
 }
 
 export default function runBrainProgressionGame() {

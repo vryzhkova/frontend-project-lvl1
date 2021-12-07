@@ -17,14 +17,18 @@ function findGreatestCommonDivisor(firstValue, secondValue) {
   return a;
 }
 
-function getBrainGcdGameData() {
+function getQuestionAndAnswer() {
   const firstRandomNumber = getRandomNumber();
   const secondRandomNumber = getRandomNumber();
 
   const question = `${firstRandomNumber} ${secondRandomNumber}`;
   const correctAnswer = String(findGreatestCommonDivisor(firstRandomNumber, secondRandomNumber));
 
-  return { question, correctAnswer, description };
+  return { question, correctAnswer };
+}
+
+function getBrainGcdGameData() {
+  return { description, getQuestionAndAnswer }
 }
 
 export default function runBrainGcdGame() {
