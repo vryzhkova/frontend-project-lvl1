@@ -13,19 +13,20 @@ function generateArithmeticProgression(startNumber, progressionLength, progressi
 
 function getBrainProgressionGameData() {
   return {
-    description, getQuestionAndAnswer: () => {
+    description,
+    getQuestionAndAnswer: () => {
       const startNumber = getRandomNumber(100);
-      const progressionStep = getRandomNumber(5);
-      const progressionLength = getRandomNumber(10, 5);
-      const arithmeticProgression = generateArithmeticProgression(startNumber, progressionLength, progressionStep);
-      const hiddenNumberIndex = getRandomNumber(progressionLength);
+      const step = getRandomNumber(5);
+      const length = getRandomNumber(10, 5);
+      const arithmeticProgression = generateArithmeticProgression(startNumber, length, step);
+      const hiddenNumberIndex = getRandomNumber(length);
       const hiddenNumber = arithmeticProgression[hiddenNumberIndex];
-      arithmeticProgression[hiddenNumberIndex] = '..'
+      arithmeticProgression[hiddenNumberIndex] = '..';
       return {
         question: arithmeticProgression.join(' '),
         correctAnswer: String(hiddenNumber),
-      }
-    }
+      };
+    },
   };
 }
 

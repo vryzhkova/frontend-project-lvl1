@@ -28,7 +28,7 @@ function getQuestionAndAnswer() {
 }
 
 function getBrainGcdGameData() {
-  return { description, getQuestionAndAnswer }
+  return { description, getQuestionAndAnswer };
 }
 
 export default function runBrainGcdGame() {

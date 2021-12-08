@@ -23,7 +23,7 @@ function getQuestionAndAnswer() {
 }
 
 function getBrainPrimeGameData() {
-  return { description,  getQuestionAndAnswer };
+  return { description, getQuestionAndAnswer };
 }
 
 export default function runBrainPrimeGame() {
