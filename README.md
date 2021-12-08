@@ -29,3 +29,5 @@
 5. Команда brain-prime. Определение является ли предложенное число простыми.
 
 # Демонстрация запуска и процесса игр:
+
+[![asciicast](https://asciinema.org/a/6WSPUsQZKy3eYluu9cbPaN7uc.svg)](https://asciinema.org/a/6WSPUsQZKy3eYluu9cbPaN7uc)
