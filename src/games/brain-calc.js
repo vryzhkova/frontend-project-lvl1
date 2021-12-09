@@ -4,21 +4,16 @@ import getRandomNumber from '../getRandomNumber.js';
 const OPERATORS = ['+', '-', '*'];
 
 function getOperationResult(operator, leftOperand, rightOperand) {
-  let result = null;
   switch (operator) {
     case '+':
-      result = leftOperand + rightOperand;
-      break;
+      return leftOperand + rightOperand;
     case '-':
-      result = leftOperand - rightOperand;
-      break;
+      return leftOperand - rightOperand;
     case '*':
-      result = leftOperand * rightOperand;
-      break;
+      return leftOperand * rightOperand;
     default:
-      break;
+      return null;
   }
-  return result;
 }
 
 const description = 'What is the result of the expression?';
